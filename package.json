@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/mabner/Ex04-Parte2/issues"
   },
-  "homepage": "https://github.com/mabner/Ex04-Parte2#readme"
+  "homepage": "https://github.com/mabner/Ex04-Parte2#readme",
+  "dependencies": {
+    "graphql": "^15.3.0"
+  }
 }
