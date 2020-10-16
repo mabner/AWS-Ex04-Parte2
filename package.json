@@ -1,0 +1,19 @@
+{
+  "name": "ex04-parte2",
+  "version": "0.0.1",
+  "description": "Parte 2 do exercicio 4",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mabner/Ex04-Parte2.git"
+  },
+  "author": "Marcos Leite",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mabner/Ex04-Parte2/issues"
+  },
+  "homepage": "https://github.com/mabner/Ex04-Parte2#readme"
+}
