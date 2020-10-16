@@ -7,7 +7,7 @@ var schema = buildSchema(`
   type Query {
     rollDice(numDice: Int!, numSides: Int): [Int]
   }
-`);
+`);// ! makes makes it 'not null'
 
 // The root provides a resolver function for each API endpoint
 var root = {
