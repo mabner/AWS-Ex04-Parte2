@@ -4,9 +4,13 @@ var { buildSchema } = require('graphql');
 
 // Construct a schema, using GraphQL schema language
 var schema = buildSchema(`
-  type Query {
-    rollDice(numDice: Int!, numSides: Int): [Int]
-  }
+  type RandomDie {
+  roll(numRolls: Int!): [Int]
+}
+
+type Query {
+  getDie(numSides: Int): RandomDie
+}
 `);// ! makes makes it 'not null'
 
 // The root provides a resolver function for each API endpoint
