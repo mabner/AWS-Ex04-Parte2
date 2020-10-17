@@ -25,34 +25,39 @@ type Mutation {
 }
 `);
 
-// This class implements the RandomDie GraphQL type
-class RandomDie {
-	constructor(numSides) {
-		this.numSides = numSides;
-	}
-
-	rollOnce() {
-		return 1 + Math.floor(Math.random() * this.numSides);
-	}
-
-	roll({ numRolls }) {
-		var output = [];
-		for (var i = 0; i < numRolls; i++) {
-			output.push(this.rollOnce());
-		}
-		return output;
+// If Message had any complex fields, we'd put them on this object.
+class Message {
+	constructor(id, { content, author }) {
+		this.id = id;
+		this.content = content;
+		this.author = author;
 	}
 }
 
 // The root provides the top-level API endpoints
+// Maps username to content
 var fakeDatabase = {};
 var root = {
-	setMessage: ({ message }) => {
-		fakeDatabase.message = message;
-		return message;
+	getMessage: ({ id }) => {
+		if (!fakeDatabase[id]) {
+			throw new Error('no message exists with id ' + id);
+		}
+		return new Message(id, fakeDatabase[id]);
 	},
-	getMessage: () => {
-		return fakeDatabase.message;
+	createMessage: ({ input }) => {
+		// Create a random id for our "database".
+		var id = require('crypto').randomBytes(10).toString('hex');
+
+		fakeDatabase[id] = input;
+		return new Message(id, input);
+	},
+	updateMessage: ({ id, input }) => {
+		if (!fakeDatabase[id]) {
+			throw new Error('no message exists with id ' + id);
+		}
+		// This replaces all old data, but some apps might want partial update.
+		fakeDatabase[id] = input;
+		return new Message(id, input);
 	},
 };
 
@@ -65,5 +70,6 @@ app.use(
 		graphiql: true,
 	})
 );
-app.listen(4000);
-console.log('Running a GraphQL API server at localhost:4000/graphql');
+app.listen(4000, () => {
+	console.log('Running a GraphQL API server at localhost:4000/graphql');
+});
