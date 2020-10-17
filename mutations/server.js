@@ -4,15 +4,9 @@ var { buildSchema } = require('graphql');
 
 // Construct a schema, using GraphQL schema language
 var schema = buildSchema(`
-  type RandomDie {
-    numSides: Int!
-    rollOnce: Int!
-    roll(numRolls: Int!): [Int]
-  }
+type Mutation { setMessage(message: String): String }
 
-  type Query {
-    getDie(numSides: Int): RandomDie
-  }
+type Query { getMessage: String }
 `);
 
 // This class implements the RandomDie GraphQL type
