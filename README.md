@@ -6,7 +6,17 @@ Código utilizado em tutoriais de GraphQL pra servidor de base pra fazer a parte
 
 GraphiQL tool: http://localhost:4000/graphql
 
-![Exemplo](https://graphql.org/img/hello.png)
 
-------
+
+#### Tutoriais:
+
+Passagem de objetos
+
+https://graphql.org/graphql-js/object-types/
+
+
+
+Mutations
+
+https://graphql.org/graphql-js/mutations-and-input-types/
 
