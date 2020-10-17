@@ -29,9 +29,14 @@ class RandomDie {
 }
 
 // The root provides the top-level API endpoints
+var fakeDatabase = {};
 var root = {
-	getDie: ({ numSides }) => {
-		return new RandomDie(numSides || 6);
+	setMessage: ({ message }) => {
+		fakeDatabase.message = message;
+		return message;
+	},
+	getMessage: () => {
+		return fakeDatabase.message;
 	},
 };
 
